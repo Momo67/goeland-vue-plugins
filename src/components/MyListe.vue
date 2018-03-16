@@ -1,5 +1,6 @@
 <template id="my-liste" lang="html">
   <div class="my-liste" v-if="display_liste">
+    <!--
     <div class="vuetable-pagination ui basic segment grid">
       <vuetable-pagination-info ref="paginationInfoTop"
         infoTemplate="Affichage des objets {from} à {to} de {total}"
@@ -9,6 +10,7 @@
         @vuetable-pagination:change-page="onChangePage"
       ></vuetable-pagination>
     </div>
+  -->
     <vuetable ref="vuetable"
       :api-mode="true"
       :api-url="src"
@@ -42,14 +44,14 @@
 </template>
 
 <script>
-import {Vuetable, VuetablePagination, VuetablePaginationInfo} from 'vuetable-2'
+// import {Vuetable, VuetablePagination, VuetablePaginationInfo} from 'vuetable-2'
+Vue.component('vuetable', require('../../node_modules/vuetable-2/src/components/Vuetable.vue').default)
+Vue.component('vuetable-pagination', require('../../node_modules/vuetable-2/src/components/VuetablePagination.vue').default)
+Vue.component('vuetable-pagination-info', require('../../node_modules/vuetable-2/src/components/VuetablePaginationInfo.vue').default)
 
 export default {
   name: 'my-liste',
   components: {
-    Vuetable,
-    VuetablePagination,
-    VuetablePaginationInfo
   },
   props: {
     query: {
