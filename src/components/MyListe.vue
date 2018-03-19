@@ -44,8 +44,8 @@
 </template>
 
 <script>
-// import {Vuetable, VuetablePagination, VuetablePaginationInfo} from 'vuetable-2'
-Vue.component('vuetable', require('../../node_modules/vuetable-2/src/components/Vuetable.vue').default)
+import {Vuetable} from 'vuetable-2'
+Vue.use(Vuetable)
 Vue.component('vuetable-pagination', require('../../node_modules/vuetable-2/src/components/VuetablePagination.vue').default)
 Vue.component('vuetable-pagination-info', require('../../node_modules/vuetable-2/src/components/VuetablePaginationInfo.vue').default)
 
