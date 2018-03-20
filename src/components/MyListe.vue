@@ -1,6 +1,5 @@
 <template id="my-liste" lang="html">
   <div class="my-liste" v-if="display_liste">
-    <!--
     <div class="vuetable-pagination ui basic segment grid">
       <vuetable-pagination-info ref="paginationInfoTop"
         infoTemplate="Affichage des objets {from} à {to} de {total}"
@@ -10,7 +9,6 @@
         @vuetable-pagination:change-page="onChangePage"
       ></vuetable-pagination>
     </div>
-  -->
     <vuetable ref="vuetable"
       :api-mode="true"
       :api-url="src"
