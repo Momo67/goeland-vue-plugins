@@ -1,6 +1,6 @@
 <template id="my-liste" lang="html">
   <div class="my-liste" v-if="display_liste">
-    <div class="vuetable-pagination ui basic segment grid">
+    <div class="vuetable-pagination ui basic segment grid" v-if="displayPagination">
       <vuetable-pagination-info ref="paginationInfoTop"
         infoTemplate="Affichage des objets {from} à {to} de {total}"
         noDataTemplate="Pas d'objet!"
@@ -10,10 +10,11 @@
       ></vuetable-pagination>
     </div>
     <vuetable ref="vuetable"
-      :api-mode="true"
+      :api-mode="mode"
       :api-url="src"
       http-method="post"
       :http-options="query"
+      :data="data"
       data-path="data"
       :fields="fields"
       :sort-order="sortOrder"
@@ -29,7 +30,7 @@
       @vuetable:row-clicked="onRowClicked"
       tableClass="mywidth ui blue selectable celled stackable attached table"
     ></vuetable>
-    <div class="vuetable-pagination ui basic segment grid">
+    <div class="vuetable-pagination ui basic segment grid" v-if="displayPagination">
       <vuetable-pagination-info ref="paginationInfo"
         infoTemplate="Affichage des objets {from} à {to} de {total}"
         noDataTemplate="Pas d'objet!"
@@ -52,14 +53,22 @@ export default {
   components: {
   },
   props: {
+    mode: {
+      type: Boolean,
+      default: true
+    },
     query: {
       type: Object,
       default: () => {},
-      required: true
+      required: false
+    },
+    data: {
+      type: [Array, Object],
+      default: null
     },
     src: {
       type: String,
-      required: true
+      required: false
     },
     fields: {
       type: Array,
@@ -67,7 +76,8 @@ export default {
     },
     sortOrder: {
       type: Array,
-      required: true
+      default: () => [],
+      required: false
     },
     rowDetails: {
       type: String
@@ -75,6 +85,10 @@ export default {
     perPage: {
       type: Number,
       default: 10
+    },
+    displayPagination: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -104,10 +118,12 @@ export default {
       if (paginationData.current_page === paginationData.last_page) {
         paginationData.to = paginationData.total
       }
-      this.$refs.paginationTop.setPaginationData(paginationData)
-      this.$refs.paginationInfoTop.setPaginationData(paginationData)
-      this.$refs.pagination.setPaginationData(paginationData)
-      this.$refs.paginationInfo.setPaginationData(paginationData)
+      if (this.displayPagination) {
+        this.$refs.paginationTop.setPaginationData(paginationData)
+        this.$refs.paginationInfoTop.setPaginationData(paginationData)
+        this.$refs.pagination.setPaginationData(paginationData)
+        this.$refs.paginationInfo.setPaginationData(paginationData)
+      }
     },
     onChangePage (page) {
       this.$refs.vuetable.changePage(page)
