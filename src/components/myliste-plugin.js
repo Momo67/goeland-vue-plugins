@@ -2,8 +2,13 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import MyListe from './MyListe.vue'
 import jQuery from 'jquery'
-import 'semantic-ui/dist/semantic.css'
-import 'semantic-ui/dist/semantic.js'
+// alert('UI_ENV: ' + process.env.UI_ENV)
+if (process.env.UI_ENV === 'semantic') {
+  // import(/* webpackChunkName: "semantic-css" */ 'semantic-ui/dist/semantic.css').then(() => {console.log('semantic.css loaded!')})
+  // import(/* webpackChunkName: "semantic-js" */ 'semantic-ui/dist/semantic.js').then(() => {console.log('semantic.js loaded!')})
+  import(/* webpackChunkName: "semantic-css" */ 'semantic-ui/dist/semantic.css')
+  import(/* webpackChunkName: "semantic-js" */ 'semantic-ui/dist/semantic.js')
+}
 
 export function install(Vue, options) {
   Vue.component('my-liste', MyListe)

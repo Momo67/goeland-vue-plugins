@@ -13,7 +13,8 @@ module.exports = {
     library: 'MyListe',
     libraryTarget: 'window',
     path: path.resolve(__dirname + '/../dist/'),
-    filename: 'my-liste.js'
+    filename: 'my-liste.js',
+    chunkFilename: 'my-liste.[name].js'
   },
   resolve: {
     alias: {
@@ -96,7 +97,8 @@ module.exports = {
     } ),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"testing"'
+        NODE_ENV: '"testing"',
+        UI_ENV: JSON.stringify(process.env.UI_ENV || '')
       }
     })
   ]
