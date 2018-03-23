@@ -7,6 +7,11 @@ if (process.env.UI_ENV === 'semantic') {
   import(/* webpackChunkName: "semantic-css" */ 'semantic-ui/dist/semantic.css')
   import(/* webpackChunkName: "semantic-js" */ 'semantic-ui/dist/semantic.js')
 }
+if (process.env.UI_ENV === 'bootstrap') {
+  import(/* webpackChunkName: "jquery" */ 'jquery/dist/jquery.js')
+  import(/* webpackChunkName: "bootstrap-sass" */ 'bootstrap-sass/assets/stylesheets/_bootstrap.scss')
+  import(/* webpackChunkName: "bootstrap-js" */ 'bootstrap/dist/js/bootstrap.js')
+}
 
 export function install(Vue, options) {
   Vue.component('my-liste', MyListe)

@@ -14,7 +14,8 @@
     "build": "node build/build.js",
     "build-myselect": "webpack --config build/webpack.myselect-plugin.config.js",
     "build-myliste": "webpack --config build/webpack.myliste-plugin.config.js",
-    "build-myliste-ui": "UI_ENV=semantic webpack --config build/webpack.myliste-plugin.config.js"
+    "build-myliste-semantic": "UI_ENV=semantic webpack --config build/webpack.myliste-plugin.config.js",
+    "build-myliste-bootstrap": "UI_ENV=bootstrap webpack --config build/webpack.myliste-plugin.config.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -41,6 +42,8 @@
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.22.0",
     "babel-runtime": "^6.26.0",
+    "bootstrap-sass": "^3.3.7",
+    "bootstrap-vue": "^2.0.0-rc.2",
     "chalk": "^2.0.1",
     "chromedriver": "^2.27.2",
     "copy-webpack-plugin": "^4.0.1",

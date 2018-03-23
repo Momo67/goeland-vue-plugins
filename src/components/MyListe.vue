@@ -10,6 +10,7 @@
       ></vuetable-pagination>
     </div>
     <vuetable ref="vuetable"
+      :css="css"
       :api-mode="mode"
       :api-url="src"
       http-method="post"
@@ -47,6 +48,7 @@ import {Vuetable} from 'vuetable-2'
 Vue.use(Vuetable)
 Vue.component('vuetable-pagination', require('../../node_modules/vuetable-2/src/components/VuetablePagination.vue').default)
 Vue.component('vuetable-pagination-info', require('../../node_modules/vuetable-2/src/components/VuetablePaginationInfo.vue').default)
+import {CSS} from '../config.js'
 
 export default {
   name: 'my-liste',
@@ -89,6 +91,13 @@ export default {
     displayPagination: {
       type: Boolean,
       default: true
+    },
+    css: {
+      type: Object,
+      default () {
+        return CSS
+      },
+      required: false
     }
   },
   data () {
