@@ -29,6 +29,7 @@
       @vuetable:cell-clicked="onCellClicked"
       @vuetable:load-error="onLoadError"
       @vuetable:row-clicked="onRowClicked"
+      @vuetable:loading="onLoading"
       tableClass="mywidth ui blue selectable celled stackable attached table"
     ></vuetable>
     <div class="vuetable-pagination ui basic segment grid" v-if="displayPagination">
@@ -49,6 +50,7 @@ Vue.use(Vuetable)
 Vue.component('vuetable-pagination', require('../../node_modules/vuetable-2/src/components/VuetablePagination.vue').default)
 Vue.component('vuetable-pagination-info', require('../../node_modules/vuetable-2/src/components/VuetablePaginationInfo.vue').default)
 import {CSS} from '../config.js'
+import orderBy from 'lodash/orderBy'
 
 export default {
   name: 'my-liste',
@@ -139,6 +141,18 @@ export default {
     },
     onLoadError (response) {
       this.$refs.vuetable.resetData()
+    },
+    onLoading () {
+      if (!this.mode && (typeof this.sortOrder[0] !== 'undefined')) {
+        let __iteratees = []
+        let __orders = []
+        this.sortOrder.forEach(field => {
+          __iteratees.push(field.sortField)
+          __orders.push(field.direction)
+        })
+        this.$refs.vuetable.resetData()
+        this.$refs.vuetable.data.data = orderBy(this.data.data, __iteratees, __orders)
+      }
     }
   }
 }
