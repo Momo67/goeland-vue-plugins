@@ -1,3 +1,4 @@
+/* eslint-disable */
 CSS = {}
 if (process.env.UI_ENV === 'semantic') {
   CSS = {
