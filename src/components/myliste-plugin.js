@@ -1,7 +1,6 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import MyListe from './MyListe.vue'
-console.log('Version: ', process.env.VERSION)
 
 if (process.env.UI_ENV === 'semantic') {
   if (process.env.NODE_ENV === 'production') {
