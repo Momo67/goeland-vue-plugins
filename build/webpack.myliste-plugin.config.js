@@ -24,14 +24,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
-        loaders: [
-          require.resolve('style-loader'),
-          require.resolve('css-loader'),
-          require.resolve('sass-loader')
-        ]
-      },
-      {
         test: /\.vue$/,
         loader: 'vue-loader'
       },
@@ -44,20 +36,33 @@ module.exports = {
         // include: [resolve('src'), resolve('test')]
       },
       {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: "style-loader" // creates style nodes from JS strings
+          },
+          {
+            loader: "css-loader" // translates CSS into CommonJS
+          },
+          {
+            loader: "sass-loader" // compiles Sass to CSS
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'less-loader'
-        ]
       },
       {
         test: /\.(tiff|png|jpe?g|gif|svg)(\?.*)?$/,
