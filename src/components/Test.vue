@@ -1,11 +1,11 @@
 <template id="test" lang="html">
   <div class="my-liste" id="my-liste">
     <my-liste
-    ref="myliste"
-    :mode="false"
-    :data="{links: {pagination: {total: 8, per_page: 5, current_page: 1, last_page: 2, from: 1, to: 5}}, data: options}"
-    :fields="[{name: 'Id', title: 'Identifiant', sortField: 'Id'}, {name: 'Data', title: 'Statut', sortField: 'Data', titleClass: 'left aligned', dataClass: 'left aligned'}, {name: 'IsActive', title: 'IsActive', sortField: 'IsActive'}, {name: 'SortOrder', title: 'SortOrder', sortField: 'SortOrder'}]"
-    :display-pagination="false"
+      ref="myliste"
+      :mode="false"
+      :data="{links: {pagination: {total: 8, per_page: 5, current_page: 1, last_page: 2, from: 1, to: 5}}, data: options}"
+      :fields="[{name: 'Id', title: 'Identifiant', sortField: 'Id'}, {name: 'Data', title: 'Statut', sortField: 'Data', titleClass: 'left aligned', dataClass: 'left aligned'}, {name: 'IsActive', title: 'IsActive', sortField: 'IsActive'}, {name: 'SortOrder', title: 'SortOrder', sortField: 'SortOrder'}]"
+      :display-pagination="false"
     ></my-liste>
   </div>
 </template>
@@ -13,6 +13,9 @@
 <script>
 import MySelect from './MySelect'
 import MyListe from './MyListe'
+// import 'jquery/dist/jquery.js'
+// import 'semantic-ui/dist/semantic.js'
+// import 'semantic-ui-css/semantic.min.css'
 
 export default {
   name: 'test',
@@ -38,10 +41,11 @@ export default {
         genre: 227,
         cadastre: 1
       },
-      placeholder: 'Status Quo',
+      placeholder: 'Status Quo'
+      /*
       css: {
         tableClass: 'ui red selectable celled stackable attached table',
-        // tableClass:     'table table-striped table-bordered',
+        // tableClass: 'table table-striped table-bordered',
         loadingClass: 'loading',
         ascendingIcon: 'blue chevron up icon',
         descendingIcon: 'blue chevron down icon',
@@ -49,6 +53,7 @@ export default {
         handleIcon: 'grey sidebar icon',
         sortableIcon: ''
       }
+      */
     }
   }
 }
