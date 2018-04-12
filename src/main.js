@@ -4,12 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-const production = (process.env.NODE_ENV === 'production')
-const semantic = (process.env.UI_ENV === 'semantic')
-const bootstrap = (process.env.UI_ENV === 'bootstrap')
-
-if (semantic) {
-  if (production) {
+if (process.env.UI_ENV === 'semantic') {
+  if (process.env.NODE_ENV === 'production') {
     import('jquery/dist/jquery.min.js')
     import('semantic-ui/dist/semantic.min.css')
     import('semantic-ui/dist/semantic.min.js')
@@ -19,8 +15,8 @@ if (semantic) {
     import('semantic-ui/dist/semantic.js')
   }
 }
-if (bootstrap) {
-  if (production) {
+if (process.env.UI_ENV === 'bootstrap') {
+  if (process.env.NODE_ENV === 'production') {
     import('jquery/dist/jquery.min.js')
     import('bootstrap-sass/assets/stylesheets/_bootstrap-mincer.scss')
     import('bootstrap/dist/js/bootstrap.min.js')
