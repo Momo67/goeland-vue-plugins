@@ -38,6 +38,9 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
+        query: {
+            presets: ['babel-preset-env']
+        }
         // include: [resolve('src'), resolve('test')]
       },
       {
