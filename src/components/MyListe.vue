@@ -45,16 +45,17 @@
 </template>
 
 <script>
-import {Vuetable} from 'vuetable-2'
-Vue.use(Vuetable)
-Vue.component('vuetable-pagination', require('../../node_modules/vuetable-2/src/components/VuetablePagination.vue').default)
-Vue.component('vuetable-pagination-info', require('../../node_modules/vuetable-2/src/components/VuetablePaginationInfo.vue').default)
 import {CSS} from '../config.js'
 import orderBy from 'lodash/orderBy'
+
+import Vuetable from 'vuetable-2'
 
 export default {
   name: 'my-liste',
   components: {
+    'vuetable': Vuetable,
+    'vuetable-pagination': require('../../node_modules/vuetable-2/src/components/VuetablePagination.vue').default,
+    'vuetable-pagination-info': require('../../node_modules/vuetable-2/src/components/VuetablePaginationInfo.vue').default
   },
   props: {
     mode: {
